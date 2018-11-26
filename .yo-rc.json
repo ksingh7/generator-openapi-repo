@@ -1,7 +1,7 @@
 {
   "generator-openapi-repo": {
     "importExistingSpec": true,
-    "importedSpec": "/Users/karasing/my-git/generator-openapi-repo/swagger.yaml",
+    "importedSpec": "swagger.yaml",
     "name": "scogo",
     "repo": "ksingh7/generator-openapi-repo",
     "splitSpec": false,
