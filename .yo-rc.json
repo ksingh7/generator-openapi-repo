@@ -4,7 +4,7 @@
     "importedSpec": "/Users/karasing/my-git/generator-openapi-repo/swagger.yaml",
     "name": "scogo",
     "repo": "ksingh7/generator-openapi-repo",
-    "splitSpec": true,
+    "splitSpec": false,
     "samples": true,
     "installSwaggerUI": true
   }
