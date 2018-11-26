@@ -1,60 +1,43 @@
-# generator-openapi-repo [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Yeoman generator for OpenAPI(fka Swagger) repo to help you share spec for your API
+# scogo OpenAPI Specification
+[![Build Status](https://travis-ci.org/ksingh7/generator-openapi-repo.svg?branch=master)](https://travis-ci.org/ksingh7/generator-openapi-repo)
 
-<center>
+## Steps to finish
 
-![logo](./logo.png)
+1. Enable [Travis](https://docs.travis-ci.com/user/getting-started/#To-get-started-with-Travis-CI%3A) for your repository (**note**: you already have `.travis.yml` file)
+2. [Create GitHub access token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/); check `public_repo` on `Select scopes` section.
+3. Use the token value as a value for [Travis environment variable](https://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings) with the name `GH_TOKEN`
+4. Make a test commit to trigger CI: `git commit --allow-empty -m "Test Travis CI" && git push`
+5. Wait until Travis build is finished. You can check progress by clicking on the `Build Status` badge at the top
+6. If you did everything correct, https://ksingh7.github.io/generator-openapi-repo/ will lead to your new docs
+7. **[Optional]** You can setup [custom domain](https://help.github.com/articles/using-a-custom-domain-with-github-pages/) (just create `web/CNAME` file)
+8. Start writing/editing your OpenAPI spec: check out [usage](#usage) section below
+9. **[Optional]** If you document public API consider adding it into [APIs.guru](https://APIs.guru) directory using [this form](https://apis.guru/add-api/).
+10. Delete this section :smile:
 
-</center>
+## Links
 
-## Why?
-There are a few advantages in hosting your API specification + docs on GitHub:
- - Community engagement (PR's and issues)
- - Hosting on GitHub pages (perfect uptime, CDN, Jekyll, custom domains with CNAME)
- - Advertisment in the GitHub community
- - Revision history, branching, CI
- - Fast on-boarding time (everyone knows how to use GitHub :smile:)
+- Documentation(ReDoc): https://ksingh7.github.io/generator-openapi-repo/
+- SwaggerUI: https://ksingh7.github.io/generator-openapi-repo/swagger-ui/
+- Look full spec:
+    + JSON https://ksingh7.github.io/generator-openapi-repo/swagger.json
+    + YAML https://ksingh7.github.io/generator-openapi-repo/swagger.yaml
+- Preview spec version for branch `[branch]`: https://ksingh7.github.io/generator-openapi-repo/preview/[branch]
 
-## Features
-This generator helps to create a GitHub repo with the following features:
- - Possibility to split a big Swagger spec into smaller files and bundle it for deployment
- - Continuous integration/deployment on Travis
- - Code samples as separate files
- - Swagger spec is validated after each commit
- - Swagger spec + ReDoc deployed to Github Pages (you can use a custom domain)
- - Live editing in your editor or `swagger-editor` :heart_eyes:
- ![live editing](./live-edit.gif)
+**Warning:** All above links are updated only after Travis CI finishes deployment
 
-## Examples of generated repositories
-- https://github.com/Rebilly/RebillyAPI
-- https://github.com/thingful/openapi-spec
-- https://github.com/TwineHealth/TwineDeveloperDocs
+## Working on specification
+### Install
 
-## How to generate your repository
+1. Install [Node JS](https://nodejs.org/)
+2. Clone repo and `cd`
+    + Run `npm install`
 
-We assume you already have [node.js](https://nodejs.org/) installed.
+### Usage
 
-- First, install [Yeoman](http://yeoman.io) and `generator-openapi-repo`:
-```bash
-npm install -g yo
-npm install -g generator-openapi-repo
-```
-- Then [create GitHub repo](https://help.github.com/articles/create-a-repo/#create-a-new-repository-on-github) where your OpenAPI spec will live.
-- [Clone your repo](https://help.github.com/articles/cloning-a-repository/) and execute the following command inside it:
-```bash
-yo openapi-repo
-```
--  Commit and push your changes to the GitHub and follow instruction from `README.md` of your newly created repo.
-**Note**: don't forget to commit the `.yo-rc.json` file, it contains all answers gave to yeoman, and they are reused during the update procedure.
-
-## Updating an existing project
-  - First make sure you have committed everything or have a backup
-  - Run `yo openapi-repo` over the project again
-  - `yo` will ask you for each file if you want to overwrite
-  - For those files you haven't edited, just say yes
-  - For the other ones, type `d` for diff and see what's changed
-
-[npm-image]: https://badge.fury.io/js/generator-openapi-repo.svg
-[npm-url]: https://npmjs.org/package/generator-openapi-repo
-[daviddm-image]: https://david-dm.org/Rebilly/generator-openapi-repo.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/Rebilly/generator-openapi-repo
+1. Run `npm start`
+2. Checkout console output to see where local server is started. You can use all [links](#links) (except `preview`) by replacing https://ksingh7.github.io/generator-openapi-repo/ with url from the message: `Server started <url>`
+3. Make changes using your favorite editor or `swagger-editor` (look for URL in console output)
+4. All changes are immediately propagated to your local server, moreover all documentation pages will be automagically refreshed in a browser after each change
+**TIP:** you can open `swagger-editor`, documentation and `swagger-ui` in parallel
+5. Once you finish with the changes you can run tests using: `npm test`
+6. Share you changes with the rest of the world by pushing to GitHub :smile:
